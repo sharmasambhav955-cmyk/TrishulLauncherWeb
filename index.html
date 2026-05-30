@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Trishul Launcher</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- Background -->
+
+  <div class="background-glow"></div>
+
+  <!-- Navbar -->
+
+  <header class="navbar">
+
+    <div class="logo">
+
+      <img src="assets/logo.png" alt="">
+
+      <h2>Trishul Launcher</h2>
+
+    </div>
+
+    <nav>
+
+      <a href="#">Home</a>
+
+      <a href="#features">Features</a>
+
+      <a href="#gallery">Gallery</a>
+
+      <a href="#feedback">Feedback</a>
+
+      <a href="#download">Download</a>
+
+    </nav>
+
+  </header>
+
+  <!-- Hero -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <span class="tag">
+        🔱 Ultimate Minecraft Experience
+      </span>
+
+      <h1>
+        Unleash The Power <br>
+        Of Trishul Launcher
+      </h1>
+
+      <p>
+        Optimized FPS, smooth PvP,
+        premium visuals and modern gameplay.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="YOUR_DOWNLOAD_LINK"
+
+           target="_blank"
+
+           onclick="increaseDownloads()"
+
+           class="download-btn">
+
+          Download Now
+
+        </a>
+
+        <a href="https://discord.gg/YOURSERVER"
+
+           target="_blank"
+
+           class="secondary-btn">
+
+          Join Discord
+
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- Launcher Mockup -->
+
+    <div class="mockup-container">
+
+      <div class="mockup">
+
+        <div class="mockup-top">
+
+          <div class="dots">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+          </div>
+
+          <h3>Trishul Launcher</h3>
+
+        </div>
+
+        <div class="mockup-sidebar">
+
+          <div class="side-item active">
+            Home
+          </div>
+
+          <div class="side-item">
+            Mods
+          </div>
+
+          <div class="side-item">
+            Settings
+          </div>
+
+          <div class="side-item">
+            Accounts
+          </div>
+
+        </div>
+
+        <div class="mockup-content">
+
+          <div class="play-card">
+
+            <h2>Play Minecraft</h2>
+
+            <p>
+              Maximum FPS and smooth PvP experience.
+            </p>
+
+            <button>
+              Launch Game
+            </button>
+
+          </div>
+
+          <div class="mini-stats">
+
+            <div class="mini-box">
+
+              <h1 id="members">
+                0
+              </h1>
+
+              <span>Discord Members</span>
+
+            </div>
+
+            <div class="mini-box">
+
+              <h1 id="views">
+                0
+              </h1>
+
+              <span>Website Views</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Stats -->
+
+  <section class="stats">
+
+    <div class="stat-box">
+
+      <h1 id="downloads">
+        0
+      </h1>
+
+      <p>Downloads</p>
+
+    </div>
+
+    <div class="stat-box">
+
+      <h1 id="version">
+        v2.4.1
+      </h1>
+
+      <p>Launcher Version</p>
+
+    </div>
+
+    <div class="stat-box">
+
+      <h1 id="fps">
+        120+
+      </h1>
+
+      <p>FPS Boost</p>
+
+    </div>
+
+  </section>
+
+  <!-- Features -->
+
+  <section class="features"
+           id="features">
+
+    <h1>Why Trishul?</h1>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+
+        <div class="icon">🔱</div>
+
+        <h2>Trishul Power</h2>
+
+        <p>
+          Extreme performance optimized for gaming.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <div class="icon">⚔</div>
+
+        <h2>PvP Optimized</h2>
+
+        <p>
+          Smooth and responsive PvP gameplay.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <div class="icon">🔥</div>
+
+        <h2>Extreme FPS</h2>
+
+        <p>
+          Highly optimized rendering engine.
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <div class="icon">🛡</div>
+
+        <h2>Secure Launcher</h2>
+
+        <p>
+          Safe and reliable launcher experience.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Gallery -->
+
+  <section class="gallery"
+           id="gallery">
+
+    <h1>Screenshots</h1>
+
+    <div class="gallery-grid">
+
+      <img src="screen/ss1.jpg" alt="Screenshot_114">
+      <img src="screen/ss2.jpg" alt="Screenshot_115">
+      <img src="screen/ss3.jpg" alt="Screenshot_116">
+      <img src="screen/ss4.jpg" alt="Screenshot_117">
+
+    </div>
+
+  </section>
+
+  <!-- Feedback -->
+
+  <section class="feedback-section"
+           id="feedback">
+
+    <h1>Send Feedback</h1>
+
+    <p>
+      Help us improve Trishul Launcher.
+    </p>
+
+    <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com"
+          method="POST"
+          class="feedback-form">
+
+      <input type="text"
+             name="name"
+             placeholder="Your Name"
+             required>
+
+      <input type="email"
+             name="email"
+             placeholder="Your Email"
+             required>
+
+      <textarea name="message"
+                placeholder="Your Feedback"
+                required></textarea>
+
+      <button type="submit">
+
+        Send Feedback
+
+      </button>
+
+    </form>
+
+  </section>
+
+  <!-- Download -->
+
+  <section class="download-section"
+           id="download">
+
+    <h1>Ready To Play?</h1>
+
+    <p>
+      Download Trishul Launcher now.
+    </p>
+
+    <a href="YOUR_DOWNLOAD_LINK"
+
+       target="_blank"
+
+       onclick="increaseDownloads()"
+
+       class="main-download">
+
+      Download For Windows
+
+    </a>
+
+  </section>
+
+  <!-- Footer -->
+
+  <footer>
+
+    <p>
+      © 2026 Trishul Launcher.
+      All rights reserved.
+    </p>
+
+  </footer>
+
+  <!-- FIREBASE -->
+
+  <script type="module">
+
+  import { initializeApp }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+  import {
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc,
+    updateDoc,
+    increment,
+    onSnapshot
+  }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+
+    apiKey: "YOUR_API_KEY",
+
+    authDomain: "YOUR_AUTH_DOMAIN",
+
+    projectId: "YOUR_PROJECT_ID",
+
+    storageBucket: "YOUR_STORAGE_BUCKET",
+
+    messagingSenderId: "YOUR_MESSAGING_ID",
+
+    appId: "YOUR_APP_ID"
+
+  };
+
+  const app = initializeApp(firebaseConfig);
+
+  const db = getFirestore(app);
+
+  const statsRef =
+  doc(db, "stats", "live");
+
+  async function initializeStats(){
+
+    const snap =
+    await getDoc(statsRef);
+
+    if(!snap.exists()){
+
+      await setDoc(statsRef, {
+
+        views: 0,
+        downloads: 0,
+        members: 1000
+
+      });
+
+    }
+
+  }
+
+  initializeStats();
+
+  /* Increase Website Views */
+
+  async function increaseViews(){
+
+    await updateDoc(statsRef, {
+
+      views: increment(1)
+
+    });
+
+  }
+
+  increaseViews();
+
+  /* Increase Downloads */
+
+  window.increaseDownloads =
+  async function(){
+
+    await updateDoc(statsRef, {
+
+      downloads: increment(1)
+
+    });
+
+  };
+
+  /* Live Stats */
+
+  onSnapshot(statsRef, (docSnap)=>{
+
+    const data =
+    docSnap.data();
+
+    document.getElementById("views")
+    .innerText = data.views;
+
+    document.getElementById("downloads")
+    .innerText = data.downloads;
+
+    document.getElementById("members")
+    .innerText = data.members;
+
+  });
+
+  </script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
