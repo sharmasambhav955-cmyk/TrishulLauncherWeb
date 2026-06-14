@@ -1,0 +1,19 @@
+[package]
+name = "tumhara-username/trishullauncher"
+version = "0.1.0"
+description = "Official Trishul Launcher Website"
+
+[[deploy]]
+wcgi = "static-server"
+bucket = "."
+
+  [deploy.routes]
+  # Isse bina kuch likhe open karne par direct index.html chalega
+  "/" = { bucket = "index.html" }
+  
+  # Ye hain tumhare custom clean links bina .html ke!
+  "/home" = { bucket = "index.html" }
+  "/features" = { bucket = "features.html" }
+  "/gallery" = { bucket = "gallery.html" }
+  "/feedback" = { bucket = "feedback.html" }
+  "/download" = { bucket = "download.html" }
