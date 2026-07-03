@@ -1,550 +1,163 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;500;600&family=Rajdhani:wght@600;700&display=swap');
 
 :root {
-  --bg: #050505;
-  --card: #111111;
+  --bg: #030303;
+  --card: rgba(14, 14, 14, 0.75);
   --red: #ff1e1e;
-  --dark-red: #700000;
   --text: #ffffff;
-  --gray: #b9b9b9;
+  --gray: #a6a6a6;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-  color: white;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
-  background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.85)), url('assets/background.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* Purani static background image yahan se hat gayi h */
 }
 
-.background-glow {
+/* Perfect Fullscreen Video Background Structure */
+.video-bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Isse video stretch nahi hogi aur poori screen par fit rahegi */
+}
+
+/* Background Overlay for Text Readability */
+.bg-overlay {
   position: fixed;
   inset: 0;
+  /* Ye black tint gradient video ke upar text ko ekdum clear dikhayega */
+  background: linear-gradient(rgba(3, 3, 3, 0.85), rgba(3, 3, 3, 0.88)), 
+              radial-gradient(circle at 50% 50%, rgba(255, 30, 30, 0.05), transparent 75%);
   z-index: -1;
   pointer-events: none;
 }
 
-/* Navbar */
+h1, h2, h3, .navbar .logo h2 { font-family: 'Orbitron', sans-serif; letter-spacing: 1px; }
+
+/* Navbar styling setup */
 .navbar {
-  width: 100%;
-  padding: 20px 8%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  transition: background 0.3s;
+  width: 100%; padding: 25px 8%; position: fixed; top: 0; left: 0; z-index: 1000;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(4, 4, 4, 0.4); backdrop-filter: blur(25px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo img {
-  width: 45px;
-}
-
-nav {
-  display: flex;
-  gap: 30px;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-nav a:hover, nav a.active {
-  color: var(--red);
-  text-shadow: 0 0 10px var(--red);
-}
-
-/* Mobile Menu Toggle Button (PC me chhupa rahega) */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.menu-toggle span {
-  width: 28px;
-  height: 3px;
-  background: white;
-  border-radius: 2px;
-  transition: 0.3s;
-}
-
-/* Base Wrapper for Sub-pages */
-.page-container {
-  padding: 15px 8%;
-  margin-top: 140px;
-  min-height: 80vh;
-}
-
-.page-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.page-header h1 {
-  font-size: 60px;
-  margin-bottom: 15px;
-}
-
-.page-header h1 span {
-  color: var(--red);
-}
-
-.page-header p {
-  color: var(--gray);
-  font-size: 18px;
-}
-
-/* Hero */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 80px;
-  padding: 120px 8%;
-}
-
-.hero-content {
-  flex: 1;
-}
-
-.tag {
-  display: inline-block;
-  padding: 10px 18px;
-  border-radius: 30px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.hero-content h1 {
-  margin-top: 25px;
-  font-size: 72px;
-  line-height: 1.1;
-}
-
-.hero-content p {
-  margin-top: 20px;
-  max-width: 600px;
-  color: var(--gray);
-  font-size: 18px;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 20px;
-  margin-top: 35px;
-}
-
-/* Buttons */
-.download-btn, .secondary-btn, .main-download, .android-download {
-  padding: 16px 30px;
-  border-radius: 14px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-  display: inline-block;
-  text-align: center;
-}
-
-.download-btn, .main-download {
-  background: linear-gradient(90deg, #ff1e1e, #700000);
-  color: white;
-  box-shadow: 0 0 30px rgba(255,0,0,0.35);
-  border: none;
-}
-
-.android-download {
-  background: linear-gradient(90deg, #22c55e, #15803d);
-  color: white;
-  box-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
-  border: none;
-  margin-top: 15px;
-}
-
-.secondary-btn {
-  border: 1px solid rgba(255,255,255,0.12);
-  color: white;
-}
-
-.download-btn:hover, .secondary-btn:hover, .main-download:hover, .android-download:hover {
-  transform: translateY(-5px);
-}
-
-/* Mockup Launcher */
-.mockup-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.mockup {
-  width: 650px;
-  height: 420px;
-  border-radius: 28px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 0 60px rgba(255,0,0,0.15);
-  animation: float 4s ease-in-out infinite;
-}
-
-.mockup-top {
-  height: 70px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 0 25px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-.dots {
-  display: flex;
-  gap: 8px;
-}
-
-.dots span {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #555;
-}
-
-.mockup-sidebar {
-  width: 180px;
-  height: 100%;
-  position: absolute;
-  padding: 25px 15px;
-  border-right: 1px solid rgba(255,255,255,0.05);
-}
-
-.side-item {
-  padding: 14px;
-  margin-bottom: 10px;
-  border-radius: 12px;
-  color: #bdbdbd;
-}
-
-.side-item.active {
-  background: rgba(255,0,0,0.15);
-  color: white;
-}
-
-.mockup-content {
-  margin-left: 180px;
-  padding: 30px;
-}
-
-.play-card {
-  padding: 35px;
-  border-radius: 24px;
-  background: linear-gradient(135deg, rgba(255,0,0,0.2), rgba(120,0,0,0.2));
-}
-
-.play-card h2 { font-size: 34px; }
-.play-card p { margin: 15px 0 25px; color: #d1d1d1; }
-.play-card button {
-  padding: 14px 28px;
-  border: none;
-  border-radius: 14px;
-  background: linear-gradient(90deg, #ff1e1e, #700000);
-  color: white;
-}
-
-.mini-stats {
-  display: flex;
-  gap: 20px;
-  margin-top: 25px;
-}
-
-.mini-box {
-  flex: 1;
-  padding: 25px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-.mini-box h1 { font-size: 34px; color: var(--red); }
-.mini-box span { color: #aaa; }
-
-/* Stats Section */
-.stats {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  padding: 40px 8%;
-}
-
-.stat-box {
-  width: 300px;
-  padding: 40px;
-  border-radius: 24px;
-  text-align: center;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-.stat-box h1 { font-size: 42px; color: var(--red); }
-
-/* Features Grid */
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-}
-
-.feature-card {
-  padding: 40px;
-  border-radius: 24px;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255,255,255,0.05);
-  transition: 0.3s;
-  backdrop-filter: blur(5px);
-}
-
-.feature-card:hover {
-  transform: translateY(-10px);
-  border: 1px solid rgba(255,0,0,0.3);
-}
-
-.icon { font-size: 40px; margin-bottom: 20px; }
-.feature-card h2 { margin-bottom: 15px; }
-.feature-card p { color: var(--gray); }
-
-/* Gallery Grid */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-}
-
-.gallery-grid img {
-  width: 100%;
-  border-radius: 20px;
-  transition: 0.4s;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.gallery-grid img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 40px rgba(255,0,0,0.25);
-}
-
-/* Feedback Form */
-.feedback-form {
-  max-width: 700px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.feedback-form input, .feedback-form textarea {
-  padding: 18px;
-  border: none;
-  outline: none;
-  border-radius: 16px;
-  background: rgba(0,0,0,0.6);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(5px);
-}
-
-.feedback-form textarea { min-height: 180px; resize: none; }
-.feedback-form button {
-  padding: 18px;
-  border: none;
-  border-radius: 16px;
-  background: linear-gradient(90deg, #ff1e1e, #700000);
-  color: white;
-  font-size: 18px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.feedback-form button:hover { transform: translateY(-5px); }
-
-/* Download Page Box */
-.download-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 50vh;
-}
-
-.download-card {
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 50px;
-  border-radius: 24px;
-  text-align: center;
-  width: 100%;
-  max-width: 550px;
-  box-shadow: 0 0 50px rgba(255, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-}
-
-.download-card h2 { font-size: 28px; margin-bottom: 15px; }
-.download-card p { color: var(--gray); margin-bottom: 30px; }
-
-/* Footer */
-footer {
-  padding: 40px;
-  text-align: center;
-  color: #888;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  margin-top: 60px;
-  background: rgba(0, 0, 0, 0.4);
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
-}
-
-
-/* ==========================================
-   📱 DANGEROUSLY MOBILE RESPONSIVE CODE
-   (PC me same rahega, Mobile me automatically fit ho jayega)
-   ========================================== */
-
-@media (max-width: 768px) {
-  /* Navbar changes to burger menu */
-  .navbar {
-    padding: 15px 5%;
-  }
-
-  .menu-toggle {
-    display: flex; /* Mobile me burger button show hoga */
-  }
-
-  nav {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 75px;
-    right: -100%; /* Shuru me slide out rahega */
-    width: 70%;
-    height: calc(100vh - 75px);
-    background: rgba(5, 5, 5, 0.95);
-    backdrop-filter: blur(20px);
-    padding: 40px;
-    gap: 25px;
-    transition: 0.4s ease-in-out;
-    border-left: 1px solid rgba(255, 255, 255, 0.05);
-    z-index: 999;
-  }
-
-  nav.active {
-    right: 0; /* Click karne par andar aayega */
-  }
-
-  /* Hero Layout Grid to Single Column */
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    padding: 100px 5% 40px;
-    gap: 40px;
-  }
-
-  .hero-content h1 {
-    font-size: 40px; /* Chota font mobile screen k liye */
-  }
-
-  .hero-content p {
-    font-size: 15px;
-    margin: 15px auto;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-  }
-
-  .download-btn, .secondary-btn, .main-download, .android-download {
-    width: 100%; /* Full width buttons on phone */
-  }
-
-  /* Mockup Launcher hide sections that break UI */
-  .mockup {
-    width: 100%;
-    height: auto;
-    min-height: 320px;
-  }
-
-  .mockup-sidebar {
-    display: none; /* Mobile mockup se sidebar out */
-  }
-
-  .mockup-content {
-    margin-left: 0;
-    padding: 15px;
-  }
-
-  .play-card {
-    padding: 20px;
-  }
-
-  .play-card h2 {
-    font-size: 24px;
-  }
-
-  .mini-stats {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  /* Stat Boxes */
-  .stat-box {
-    width: 100%;
-    padding: 25px;
-  }
-
-  /* Sub-pages Headers */
-  .page-container {
-    padding: 15px 5%;
-    margin-top: 100px;
-  }
-
-  .page-header h1 {
-    font-size: 36px;
-  }
-
-  .download-card {
-    padding: 30px 20px;
-  }
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo img { width: 42px; filter: drop-shadow(0 0 8px var(--red)); }
+.logo h2 { font-weight: 900; color: #fff; }
+nav { display: flex; gap: 35px; }
+nav a { color: #dedede; text-decoration: none; font-weight: 500; font-size: 14px; font-family: 'Orbitron', sans-serif; transition: 0.3s; }
+nav a:hover { color: var(--red); text-shadow: 0 0 12px var(--red); }
+
+.menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+.menu-toggle span { width: 30px; height: 2px; background: white; transition: 0.3s; }
+
+/* Page containers global specs */
+.page-container { padding: 140px 8% 60px; min-height: 85vh; }
+.page-header { text-align: center; margin-bottom: 50px; }
+.page-header h1 { font-size: 46px; font-weight: 900; }
+.page-header h1 span { color: var(--red); text-shadow: 0 0 20px rgba(255,30,30,0.3); }
+.page-header p { color: var(--gray); font-size: 16px; margin-top: 10px; }
+
+/* Hero section alignment configs */
+.hero { min-height: 100vh; display: flex; justify-content: center; align-items: center; gap: 60px; padding: 150px 8% 80px; }
+.hero-content { flex: 1.2; }
+.tag { display: inline-block; padding: 8px 16px; font-family: 'Orbitron', sans-serif; font-size: 11px; border-radius: 4px; background: rgba(255, 30, 30, 0.08); border: 1px solid rgba(255, 30, 30, 0.25); color: var(--red); }
+.hero-content h1 { margin-top: 25px; font-size: 64px; line-height: 1.1; font-weight: 900; }
+.hero-content h1 span { color: var(--red); text-shadow: 0 0 25px rgba(255, 30, 30, 0.4); }
+.hero-desc { margin-top: 25px; max-width: 580px; color: var(--gray); font-size: 17px; line-height: 1.6; }
+.hero-buttons { display: flex; gap: 20px; margin-top: 40px; }
+
+.download-btn, .secondary-btn { padding: 16px 36px; border-radius: 8px; text-decoration: none; font-family: 'Orbitron', sans-serif; font-size: 13px; font-weight: 700; transition: 0.3s; text-align: center; }
+.download-btn { background: var(--red); color: white; box-shadow: 0 0 30px rgba(255, 30, 30, 0.35); }
+.secondary-btn { border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.03); color: white; }
+.download-btn:hover { transform: translateY(-4px); box-shadow: 0 0 40px var(--red); }
+.secondary-btn:hover { border-color: var(--red); background: rgba(255, 30, 30, 0.05); transform: translateY(-4px); }
+
+/* Mockup client engine framework template box */
+.mockup { width: 580px; height: 400px; border-radius: 16px; background: rgba(10, 10, 10, 0.8); border: 1px solid rgba(255, 255, 255, 0.06); position: relative; box-shadow: 0 30px 70px rgba(0,0,0,0.8); animation: float 5s ease-in-out infinite; overflow: hidden; }
+.mockup-top { height: 55px; display: flex; align-items: center; gap: 15px; padding: 0 20px; background: rgba(0,0,0,0.3); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.dots span { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #282828; margin-right: 5px; }
+.mockup-top h3 { font-size: 12px; color: #777; }
+.mockup-sidebar { width: 150px; height: 100%; position: absolute; padding: 20px 12px; border-right: 1px solid rgba(255, 255, 255, 0.04); }
+.side-item { padding: 10px 12px; margin-bottom: 8px; border-radius: 6px; color: #777; font-size: 12px; font-weight: 600; }
+.side-item.active { background: rgba(255, 30, 30, 0.1); color: var(--red); border-left: 2px solid var(--red); }
+.mockup-content { margin-left: 150px; padding: 25px; }
+.play-card { padding: 25px; border-radius: 12px; background: linear-gradient(135deg, rgba(255,30,30,0.08), rgba(5,5,5,0.5)); border: 1px solid rgba(255,30,30,0.15); }
+.play-card h2 { font-size: 20px; }
+.play-card p { margin: 8px 0 15px; color: #888; font-size: 12px; }
+.mock-launch { padding: 10px 24px; border: none; font-family: 'Orbitron', sans-serif; font-size: 11px; font-weight: 700; border-radius: 6px; background: var(--red); color: white; cursor: pointer; }
+
+.mini-stats { display: flex; gap: 15px; margin-top: 20px; }
+.mini-box { flex: 1; padding: 15px; border-radius: 10px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.04); }
+.mini-box h1 { font-family: 'Rajdhani', sans-serif; font-size: 28px; color: var(--text); font-weight: 700; }
+.mini-box span { color: #555; font-size: 9px; font-family: 'Orbitron', sans-serif; display: block; margin-top: 2px; }
+
+/* Grid Components & Boxes configuration blocks */
+.stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 25px; padding: 40px 8%; }
+.stat-box { width: 280px; padding: 30px; border-radius: 12px; text-align: center; background: var(--card); border: 1px solid rgba(255, 255, 255, 0.04); }
+.stat-box h1 { font-family: 'Rajdhani', sans-serif; font-size: 46px; color: var(--red); text-shadow: 0 0 20px rgba(255,30,30,0.2); }
+.stat-box p { font-family: 'Orbitron', sans-serif; font-size: 11px; color: #666; margin-top: 5px; }
+
+/* Download grid elements dynamic setup design */
+.download-wrapper { max-width: 800px; margin: auto; }
+.download-card { background: var(--card); border: 1px solid rgba(255,255,255,0.04); padding: 40px; border-radius: 16px; text-align: center; backdrop-filter: blur(10px); }
+.download-card h2 { font-size: 24px; margin-bottom: 10px; }
+.download-card p { color: var(--gray); font-size: 14px; margin-bottom: 35px; }
+
+.download-grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; width: 100%; }
+.plat-btn { padding: 20px; border-radius: 8px; text-decoration: none; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 13px; color: white; display: flex; align-items: center; justify-content: center; gap: 12px; transition: 0.3s; background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(255,255,255,0.04); }
+.icon-os { font-size: 20px; }
+
+.plat-btn.win:hover { background: #0078d4; border-color: #0078d4; box-shadow: 0 0 30px rgba(0, 120, 212, 0.4); transform: translateY(-4px); }
+.plat-btn.android:hover { background: #3ddc84; border-color: #3ddc84; color: #000; box-shadow: 0 0 30px rgba(61, 220, 132, 0.4); transform: translateY(-4px); }
+.plat-btn.linux:hover { background: #f8b739; border-color: #f8b739; color: #000; box-shadow: 0 0 30px rgba(248, 183, 57, 0.4); transform: translateY(-4px); }
+
+/* Features & Elements specs */
+.feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+.feature-card { padding: 35px; border-radius: 14px; background: var(--card); border: 1px solid rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); }
+.icon { font-size: 36px; margin-bottom: 15px; }
+.feature-card h2 { font-size: 20px; margin-bottom: 10px; }
+.feature-card p { color: var(--gray); font-size: 14px; line-height: 1.5; }
+
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.gallery-grid img { width: 100%; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+.gallery-grid img:hover { transform: scale(1.02); border-color: var(--red); box-shadow: 0 0 30px rgba(255,30,30,0.2); }
+
+.feedback-form { max-width: 600px; margin: auto; display: flex; flex-direction: column; gap: 15px; }
+.feedback-form input, .feedback-form textarea { padding: 16px; border: none; outline: none; border-radius: 8px; background: rgba(12, 12, 12, 0.8); color: white; font-size: 14px; border: 1px solid rgba(255,255,255,0.05); }
+.feedback-form textarea { min-height: 150px; resize: none; }
+.feedback-form button { padding: 16px; border: none; border-radius: 8px; background: var(--red); color: white; font-family: 'Orbitron', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+.feedback-form button:hover { transform: translateY(-3px); box-shadow: 0 0 25px var(--red); }
+
+footer { padding: 40px; text-align: center; color: #444; font-size: 12px; font-family: 'Orbitron', sans-serif; border-top: 1px solid rgba(255,255,255,0.02); margin-top: 50px; }
+
+@keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
+
+@media(max-width:1000px){
+  .hero { flex-direction: column; text-align: center; padding-top: 130px; gap: 50px; }
+  .hero-content h1 { font-size: 40px; }
+  .hero-buttons { flex-direction: column; }
+  .navbar { padding: 15px 5%; }
+  .menu-toggle { display: flex; }
+  nav { display: none; flex-direction: column; position: fixed; top: 75px; right: 0; width: 250px; background: #0c0c0c; padding: 20px; gap: 20px; }
+  nav.active { display: flex; }
+  .mockup { width: 100%; height: auto; }
+  .mockup-sidebar { display: none; }
+  .mockup-content { margin-left: 0; }
+  .download-grid-container { grid-template-columns: 1fr; }
 }
