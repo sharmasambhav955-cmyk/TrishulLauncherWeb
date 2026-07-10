@@ -6,27 +6,23 @@
   <title>Trishul Launcher | Download</title>
 
   <link rel="icon" type="image/png" href="assets/logo.png">
-  <!-- Modern Gaming Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
- <!-- Background Video Implementation -->
-<div class="video-bg-container">
-  <video autoplay loop muted playsinline class="video-bg">
-    
-    <source src="assets/bg-video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
-<div class="bg-overlay"></div>
 
+  
+  <div class="video-bg-container">
+    <video autoplay loop muted playsinline class="video-bg">
+      <source src="assets/bg-video.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="bg-overlay"></div>
 
   <header class="navbar">
     <div class="logo">
       <img src="assets/logo.png" alt="Trishul Logo">
-      <h2>TRISHUL</h2>
+      <h2>TRISHUL LAUNCHER</h2>
     </div>
     
     <div class="menu-toggle" id="mobile-menu">
@@ -47,28 +43,28 @@
   <div class="page-container">
     <div class="page-header">
       <h1>CHOOSE YOUR <span>PLATFORM</span></h1>
-      <p>Get Trishul Launcher today. Downloads count automatically across all links.</p>
+      <p>Get Trishul Launcher today. Downloads count automatically across all files.</p>
     </div>
 
     <div class="download-wrapper">
       <div class="download-card">
         <h2>Trishul Launcher Setup v2.4.1</h2>
-        <p>Choose your platform below to experience maximum FPS optimization.</p>
+        <p>Click on your platform to directly download the launcher file.</p>
         
         <div class="download-grid-container">
-          <!-- Windows Button -->
-          <a href="WINDOWS_DOWNLOAD_LINK" target="_blank" onclick="trackDownload()" class="plat-btn win">
+          
+          <a href="assets/files/TrishulLauncher.exe" download="TrishulLauncher.exe" onclick="trackDownload()" class="plat-btn win">
             <span class="icon-os">🪟</span> Download For Windows (.exe)
           </a>
 
-          <!-- Android Button -->
-          <a href="ANDROID_DOWNLOAD_LINK" target="_blank" onclick="trackDownload()" class="plat-btn android">
+          
+          <a href="assets/files/TrishulLauncher.apk" download="TrishulLauncher.apk" onclick="trackDownload()" class="plat-btn android">
             <span class="icon-os">🤖</span> Download For Android (.apk)
           </a>
 
-          <!-- Linux Button -->
-          <a href="LINUX_DOWNLOAD_LINK" target="_blank" onclick="trackDownload()" class="plat-btn linux">
-            <span class="icon-os">🐧</span> Download For Linux (.jar/.sh)
+          
+          <a href="assets/files/TrishulLauncher.jar" download="TrishulLauncher.jar" onclick="trackDownload()" class="plat-btn linux">
+            <span class="icon-os">🐧</span> Download For Linux (.jar)
           </a>
         </div>
       </div>
@@ -76,7 +72,7 @@
   </div>
 
   <footer>
-    <p>© 2026 TRISHUL CLIENT. SYSTEM ACTIVE. ALL RIGHTS RESERVED.</p>
+    <p>© 2026 TRISHUL LAUNCHER. SYSTEM ACTIVE. ALL RIGHTS RESERVED.</p>
   </footer>
 
   <script type="module">
@@ -96,7 +92,6 @@
     const db = getFirestore(app);
     const statsRef = doc(db, "stats", "live");
 
-    // Unified download tracking function for all 3 buttons
     window.trackDownload = async function() {
       await updateDoc(statsRef, {
         downloads: increment(1)
