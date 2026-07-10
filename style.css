@@ -15,10 +15,7 @@ body {
   color: var(--text);
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
-  /* Purani static background image yahan se hat gayi h */
 }
-
-/* Perfect Fullscreen Video Background Structure */
 .video-bg-container {
   position: fixed;
   top: 0;
@@ -33,14 +30,14 @@ body {
 .video-bg {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Isse video stretch nahi hogi aur poori screen par fit rahegi */
+  object-fit: cover; 
 }
 
-/* Background Overlay for Text Readability */
+
 .bg-overlay {
   position: fixed;
   inset: 0;
-  /* Ye black tint gradient video ke upar text ko ekdum clear dikhayega */
+
   background: linear-gradient(rgba(3, 3, 3, 0.85), rgba(3, 3, 3, 0.88)), 
               radial-gradient(circle at 50% 50%, rgba(255, 30, 30, 0.05), transparent 75%);
   z-index: -1;
@@ -49,7 +46,7 @@ body {
 
 h1, h2, h3, .navbar .logo h2 { font-family: 'Orbitron', sans-serif; letter-spacing: 1px; }
 
-/* Navbar styling setup */
+
 .navbar {
   width: 100%; padding: 25px 8%; position: fixed; top: 0; left: 0; z-index: 1000;
   display: flex; justify-content: space-between; align-items: center;
@@ -66,14 +63,14 @@ nav a:hover { color: var(--red); text-shadow: 0 0 12px var(--red); }
 .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
 .menu-toggle span { width: 30px; height: 2px; background: white; transition: 0.3s; }
 
-/* Page containers global specs */
+
 .page-container { padding: 140px 8% 60px; min-height: 85vh; }
 .page-header { text-align: center; margin-bottom: 50px; }
 .page-header h1 { font-size: 46px; font-weight: 900; }
 .page-header h1 span { color: var(--red); text-shadow: 0 0 20px rgba(255,30,30,0.3); }
 .page-header p { color: var(--gray); font-size: 16px; margin-top: 10px; }
 
-/* Hero section alignment configs */
+
 .hero { min-height: 100vh; display: flex; justify-content: center; align-items: center; gap: 60px; padding: 150px 8% 80px; }
 .hero-content { flex: 1.2; }
 .tag { display: inline-block; padding: 8px 16px; font-family: 'Orbitron', sans-serif; font-size: 11px; border-radius: 4px; background: rgba(255, 30, 30, 0.08); border: 1px solid rgba(255, 30, 30, 0.25); color: var(--red); }
